@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Address Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Enter Delivery Address</h1>
+    <form id="addressForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdXH5WEIUpe1maMZzH1EZViFyVy58pGH3bX--uUHlkz09vahQ/formResponse" method="POST" target="hidden_iframe">
+        <input type="text" name="entry.646589678" id="street" placeholder="Street Address" required />
+        <input type="text" name="entry.1109552692" id="city" placeholder="City" required />
+        <input type="text" name="entry.1100245186" id="state" placeholder="State (e.g., CA)" required />
+        <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+</div>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+    document.getElementById('addressForm').onsubmit = function() {
+        const streetInput = document.getElementById('street').value.trim();
+        const cityInput = document.getElementById('city').value.trim();
+        const stateInput = document.getElementById('state').value.trim();
+
+        if (streetInput === '' || cityInput === '' || stateInput === '') {
+            alert('Please fill out all fields.');
+            return false; // Prevent form submission
+        }
+
+        // Show a message while redirecting
+        document.getElementById('message').innerText = `Thank you! Redirecting...`;
+
+        // Redirect to the specified URL after submission
+        setTimeout(() => {
+            window.location.href = 'https://branden870.github.io/GMK/';
+        }, 3000);
+
+        return true; // Allow form submission
+    };
+</script>
+
+</body>
+</html>
